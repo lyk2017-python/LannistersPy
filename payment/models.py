@@ -4,7 +4,7 @@ import uuid
 
 
 class Product(models.Model):
-    name = models.CharField(max_length=150)
+    name = models.CharField(max_length=150, unique = True)
     price = models.FloatField()
     brand = models.CharField(max_length=100)
     description = models.TextField()
@@ -12,14 +12,20 @@ class Product(models.Model):
     product_home = models.URLField()
     count = models.PositiveIntegerField()
 
+    def __str__(self):
+        return "#{id} {name}".format(id = self.id, name = self.name)
+
 
 def uuidGeneratorPrepaid():
     code = uuid.uuid4().hex
     return code[:8]
 
 class PrepaidCard(models.Model):
-    barcode = models.CharField(max_length=8,default=uuidGeneratorPrepaid)
+    barcode = models.CharField(max_length=8,default=uuidGeneratorPrepaid, unique = True)
     value = models.PositiveIntegerField()
+
+    def __str__(self):
+        return "#{id} {barcode}".format(id = self.id, barcode = self.barcode)
 
 def uuidGeneratorUserCard():
     code = uuid.uuid4().hex
@@ -27,7 +33,8 @@ def uuidGeneratorUserCard():
 
 
 class UserCard(models.Model):
-    card_number = models.CharField(max_length=16, default=uuidGeneratorUserCard)
-    balance = models.PositiveIntegerField()
+    card_number = models.CharField(max_length=16, default=uuidGeneratorUserCard, unique = True)
+    balance = models.PositiveIntegerField(default = 0)
 
-
+    def __str__(self):
+        return "#{id} {card_number}".format(id = self.id, card_number = self.card_number)
