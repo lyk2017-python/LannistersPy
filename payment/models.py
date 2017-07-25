@@ -1,4 +1,5 @@
 from django.db import models
+import uuid
 
 
 class Product(models.Model):
@@ -7,12 +8,12 @@ class Product(models.Model):
     brand = models.CharField(max_length=100)
     description = models.TextField()
     image = models.ImageField()
-    url = models.URLField()
+    product_home = models.URLField()
     count = models.PositiveIntegerField()
 
 
 class PrepaidCard(models.Model):
-    number = models.CharField(max_length=8)
+    barcode = models.CharField(max_length=8)
     value = models.PositiveIntegerField()
 
 
@@ -20,3 +21,7 @@ class UserCard(models.Model):
     card_number = models.CharField(max_length=16)
     balance = models.PositiveIntegerField()
 
+
+    def uuidGenerator(self):
+        code = str(uuid.uuid4())
+        return code[:18]
