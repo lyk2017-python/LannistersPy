@@ -1,3 +1,4 @@
+
 from django.db import models
 import uuid
 
@@ -13,16 +14,16 @@ class Product(models.Model):
 
 
 def uuidGeneratorPrepaid(self):
-    code = str(uuid.uuid4())
-    return code[:10]
+    code = uuid.uuid4().hex
+    return code[:8]
 
 class PrepaidCard(models.Model):
     barcode = models.CharField(max_length=8,default=uuidGeneratorPrepaid)
     value = models.PositiveIntegerField()
 
 def uuidGeneratorUserCard(self):
-    code = str(uuid.uuid4())
-    return code[:18]
+    code = uuid.uuid4().hex
+    return code[:16]
 
 
 class UserCard(models.Model):
