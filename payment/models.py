@@ -13,7 +13,7 @@ class Product(models.Model):
     count = models.PositiveIntegerField()
 
 
-def uuidGeneratorPrepaid(self):
+def uuidGeneratorPrepaid():
     code = uuid.uuid4().hex
     return code[:8]
 
@@ -21,7 +21,7 @@ class PrepaidCard(models.Model):
     barcode = models.CharField(max_length=8,default=uuidGeneratorPrepaid)
     value = models.PositiveIntegerField()
 
-def uuidGeneratorUserCard(self):
+def uuidGeneratorUserCard():
     code = uuid.uuid4().hex
     return code[:16]
 
