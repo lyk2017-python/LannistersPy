@@ -8,8 +8,9 @@ class IndexView(generic.ListView):
     model = Vendor
 
 
-class VendorView(generic.ListView):
-    model = Product
+class VendorView(generic.DetailView):
+    model = Vendor
+    pk_url_kwarg = 'vendor_id'
 
 
 class ProductView(generic.DetailView):
