@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<p>product check</p>
-</body>
-</html>
+{% extends "payment/theme.html" %}
+
+{% block body %}
+    {% for product in object_list %}
+        <a href="/product/{{ product.slug }}">{{ product.name }}</a>
+    {% endfor %}
+{% endblock %}
