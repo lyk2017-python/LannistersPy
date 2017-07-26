@@ -42,7 +42,7 @@ class UserCard(models.Model):
         return "#{id} {card_number}".format(id = self.id, card_number = self.card_number)
 
 class Vendor(models.Model):
-    vendor_id = models.CharField(max_length=16, default = uuidGenerator16, unique = True)
+    vendor_id = models.CharField(max_length=16, default=uuidGenerator16, unique=True)
     location = models.CharField(max_length=50)
 
     def __str__(self):

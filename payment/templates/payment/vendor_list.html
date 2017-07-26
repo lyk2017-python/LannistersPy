@@ -1,5 +1,7 @@
 {% extends "payment/theme.html" %}
 
-{% for vendor in queryset %}
-    <a href="#">{{ vendor }}</a>
-{% endfor %}
+{% block body %}
+    {% for vendor in object_list %}
+        <a href="vendor/{{ vendor.id }}">{{ vendor }}</a>
+    {% endfor %}
+{% endblock %}
