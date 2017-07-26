@@ -2,13 +2,13 @@
 
 {% block body %}
     <div class="row">
-        <div class="card-deck col-md-2 col-md-offset-5">
+        <div class="card-deck col-md-4 col-md-offset-4">
             {% for vendor in object_list %}
                 <div class="card">
                     <img class="card-img-top" style="width: 100%;" src="https://image.shutterstock.com/z/stock-vector-web-development-code-html-css-java-script-concept-laptop-of-flat-icon-vector-illustration-for-454047184.jpg" alt="Card image cap">
                     <div class="card-block">
                         <a href="{% url "vendor" vendor_id=vendor.id %}"><h4 class="card-title">{{ vendor.location }}</h4></a>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text">{% for product in vendor.products.all %}{{ product.name }}, {% endfor %}</p>
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">Last updated 3 mins ago</small>
