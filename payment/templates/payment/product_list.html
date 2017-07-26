@@ -2,6 +2,6 @@
 
 {% block body %}
     {% for product in object_list %}
-        <a href="/product/{{ product.slug }}">{{ product.name }}</a>
+        <a href="{% url "product" product_slug=product.slug %}">{{ product.name }}</a>
     {% endfor %}
 {% endblock %}
