@@ -2,10 +2,10 @@
 
 {% block body %}
     <div class="row">
-        <div class="card-deck col-md-4 col-md-offset-4">
+        <div class="card-deck col-md-2 col-md-offset-5">
             {% for vendor in object_list %}
                 <div class="card">
-                    <img class="card-img-top" style="width: 100%;" src="https://image.shutterstock.com/z/stock-vector-web-development-code-html-css-java-script-concept-laptop-of-flat-icon-vector-illustration-for-454047184.jpg" alt="Card image cap">
+                    <img class="card-img-top" style="width: 100%;" src="https://scontent.fsaw1-5.fna.fbcdn.net/v/t1.0-9/10891946_704887549609418_3209293607941204607_n.png?oh=ccabf91c9e4f41e6f789f26ab2c975e4&oe=59F87972" alt="Card image cap">
                     <div class="card-block">
                         <a href="{% url "vendor" id=vendor.id %}"><h4 class="card-title">{{ vendor.location }}</h4></a>
                         <p class="card-text">{% for product in vendor.products.all %}{{ product.name }}, {% endfor %}</p>
