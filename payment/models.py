@@ -11,30 +11,40 @@ class Product(models.Model):
     image = models.ImageField()
     product_home = models.URLField()
     count = models.PositiveIntegerField()
+    slug = models.CharField(max_length = 50)
+
 
     def __str__(self):
         return "#{id} {name}".format(id = self.id, name = self.name)
 
 
-def uuidGeneratorPrepaid():
+def uuidGenerator8():
     code = uuid.uuid4().hex
     return code[:8]
 
 class PrepaidCard(models.Model):
-    barcode = models.CharField(max_length=8,default=uuidGeneratorPrepaid, unique = True)
+    barcode = models.CharField(max_length=8,default=uuidGenerator8, unique = True)
     value = models.PositiveIntegerField()
 
     def __str__(self):
         return "#{id} {barcode}".format(id = self.id, barcode = self.barcode)
 
-def uuidGeneratorUserCard():
+def uuidGenerator16():
     code = uuid.uuid4().hex
     return code[:16]
 
 
 class UserCard(models.Model):
-    card_number = models.CharField(max_length=16, default=uuidGeneratorUserCard, unique = True)
+    card_number = models.CharField(max_length=16, default=uuidGenerator16, unique = True)
     balance = models.PositiveIntegerField(default = 0)
 
     def __str__(self):
         return "#{id} {card_number}".format(id = self.id, card_number = self.card_number)
+
+class Vendor(models.Model):
+    vendor_id = models.CharField(max_length = 16, default = uuidGenerator16, unique = True)
+    location = models.CharField(max_length = 50)
+
+    def __str__(self):
+        return "#{id} {location}{vendor_id}".format(id = self.id, location = self.location,
+                                                    vendor_id = self.vendor_id)
