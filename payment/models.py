@@ -11,6 +11,7 @@ class Product(models.Model):
     image = models.ImageField()
     product_home = models.URLField()
     count = models.PositiveIntegerField()
+    slug = models.SlugField()
 
 
     def __str__(self):

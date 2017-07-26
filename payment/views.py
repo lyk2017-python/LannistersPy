@@ -5,14 +5,11 @@ from payment.models import Vendor, Product
 # Create your views here.
 
 class IndexView(generic.ListView):
-    def get_queryset(self):
-        return Vendor.objects.all()
-
+    model = Vendor
 
 class VendorView(generic.ListView):
-    def get_queryset(self):
-        return Product.objects.all()
-
+    model = Product
 
 class ProductView(generic.DetailView):
     model = Product
+    slug_url_kwarg = 'product_slug'
