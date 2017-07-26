@@ -2,6 +2,8 @@
 
 {% block body %}
     {% for vendor in object_list %}
-        <a href="vendor/{{ vendor.id }}">{{ vendor }}</a>
+        <div class="col-md-6 col-md-offset-3 text-center">
+            <a href="vendor/{{ vendor.id }}">{{ vendor }}</a>
+        </div>
     {% endfor %}
 {% endblock %}
