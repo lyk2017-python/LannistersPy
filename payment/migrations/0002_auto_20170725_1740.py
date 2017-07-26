@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='prepaidcard',
             name='barcode',
-            field=models.CharField(default=payment.models.uuidGeneratorPrepaid, max_length=8, unique=True),
+            field=models.CharField(default=payment.models.uuidGenerator8, max_length=8, unique=True),
         ),
         migrations.AlterField(
             model_name='product',
@@ -26,6 +26,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='usercard',
             name='card_number',
-            field=models.CharField(default=payment.models.uuidGeneratorUserCard, max_length=16, unique=True),
+            field=models.CharField(default=payment.models.uuidGenerator16, max_length=16, unique=True),
         ),
     ]

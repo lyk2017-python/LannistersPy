@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
             name='PrepaidCard',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('barcode', models.CharField(default=payment.models.uuidGeneratorPrepaid, max_length=8)),
+                ('barcode', models.CharField(default=payment.models.uuidGenerator8, max_length=8)),
                 ('value', models.PositiveIntegerField()),
             ],
         ),
@@ -39,7 +39,7 @@ class Migration(migrations.Migration):
             name='UserCard',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('card_number', models.CharField(default=payment.models.uuidGeneratorUserCard, max_length=16)),
+                ('card_number', models.CharField(default=payment.models.uuidGenerator16, max_length=16)),
                 ('balance', models.PositiveIntegerField()),
             ],
         ),
