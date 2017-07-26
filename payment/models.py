@@ -44,7 +44,6 @@ class UserCard(models.Model):
 
 
 class Vendor(models.Model):
-    vendor_id = models.CharField(max_length=16, default=uuidGenerator16, unique=True)
     location = models.CharField(max_length=50)
     products = models.ManyToManyField(Product)
 

@@ -7,7 +7,7 @@
                 <div class="card">
                     <img class="card-img-top" style="width: 100%;" src="https://image.shutterstock.com/z/stock-vector-web-development-code-html-css-java-script-concept-laptop-of-flat-icon-vector-illustration-for-454047184.jpg" alt="Card image cap">
                     <div class="card-block">
-                        <a href="{% url "vendor" vendor_id=vendor.id %}"><h4 class="card-title">{{ vendor.location }}</h4></a>
+                        <a href="{% url "vendor" id=vendor.id %}"><h4 class="card-title">{{ vendor.location }}</h4></a>
                         <p class="card-text">{% for product in vendor.products.all %}{{ product.name }}, {% endfor %}</p>
                     </div>
                     <div class="card-footer">
