@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<p>oldu mu dayıııı</p>
+{% extends "payment/theme.html" %}
 
-</body>
-</html>
+{% for vendor in queryset %}
+    <a href="#">{{ vendor }}</a>
+{% endfor %}
