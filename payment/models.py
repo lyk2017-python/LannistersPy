@@ -61,4 +61,3 @@ class Inventory(models.Model):
 
     def __str__(self):
         return "{vendor} -> {product} #{count}".format(vendor=self.vendor, product=self.product, count=self.count)
-
