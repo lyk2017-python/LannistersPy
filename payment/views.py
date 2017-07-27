@@ -11,6 +11,9 @@ class IndexView(generic.ListView):
         for vendor in vendors:
             inventories = vendor.inventory_set.all()
             vendor.product_names = [inventory.product.name for inventory in inventories]
+            vendor.stock_count = 0
+            for inventory in inventories:
+                vendor.stock_count += inventory.count
 
         context["vendors"] = vendors
         return context
