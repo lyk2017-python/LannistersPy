@@ -44,11 +44,9 @@ class PrepaidCardAdmin (admin.ModelAdmin):
 class VendorAdmin (admin.ModelAdmin):
     list_display = [
         "location",
-        "products",
     ]
     search_fields = [
         "location",
-        "products",
     ]
 
 
