@@ -10,7 +10,6 @@ class Product(models.Model):
     description = models.TextField()
     image = models.ImageField()
     product_home = models.URLField()
-    count = models.PositiveIntegerField()
     slug = models.SlugField()
 
     def __str__(self):
@@ -50,7 +49,16 @@ class UserCard(models.Model):
 
 class Vendor(models.Model):
     location = models.CharField(max_length=50)
-    products = models.ManyToManyField(Product)
 
     def __str__(self):
         return "{location}".format(location=self.location)
+
+
+class Inventory(models.Model):
+    vendor = models.ForeignKey(Vendor)
+    product = models.ForeignKey(Product)
+    count = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return "{vendor} -> {product} #{count}".format(vendor=self.vendor, product=self.product,
+                                                       count=self.count)
