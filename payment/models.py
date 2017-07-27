@@ -60,5 +60,5 @@ class Inventory(models.Model):
     count = models.PositiveIntegerField(default=0)
 
     def __str__(self):
-        return "{vendor} -> {product} #{count}".format(vendor=self.vendor, product=self.product,
-                                                       count=self.count)
+        return "{vendor} -> {product} #{count}".format(vendor=self.vendor, product=self.product, count=self.count)
+
