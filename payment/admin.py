@@ -1,10 +1,11 @@
 from django.contrib import admin
-from payment.models import Product,UserCard, PrepaidCard, Vendor
+from payment.models import Product, UserCard, PrepaidCard, Vendor
 
-#Product
-#UserCard
-#PrepaidCard
-#Vendor
+# Product
+# UserCard
+# PrepaidCard
+# Vendor
+
 
 @admin.register(Product)
 class ProductAdmin (admin.ModelAdmin):
@@ -18,6 +19,13 @@ class ProductAdmin (admin.ModelAdmin):
         "brand",
         "price",
     ]
+    list_filter = [
+        "name", # Filters in list screen.
+        "brand",
+        "price",
+    ]
+
+
 @admin.register(UserCard)
 class UserCardAdmin (admin.ModelAdmin):
     list_display = [
@@ -28,6 +36,7 @@ class UserCardAdmin (admin.ModelAdmin):
         "card_number",
         "balance",
     ]
+
 
 @admin.register(PrepaidCard)
 class PrepaidCardAdmin (admin.ModelAdmin):
@@ -40,6 +49,7 @@ class PrepaidCardAdmin (admin.ModelAdmin):
         "value",
     ]
 
+
 @admin.register(Vendor)
 class VendorAdmin (admin.ModelAdmin):
     list_display = [
@@ -48,5 +58,6 @@ class VendorAdmin (admin.ModelAdmin):
     search_fields = [
         "location",
     ]
-
-
+    list_filter = [
+        "location"  # Filters in list screen.
+    ]
