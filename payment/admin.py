@@ -20,14 +20,35 @@ class ProductAdmin (admin.ModelAdmin):
     ]
 @admin.register(UserCard)
 class UserCardAdmin (admin.ModelAdmin):
-    pass
+    list_display = [
+        "card_number",
+        "balance",
+    ]
+    search_fields = [
+        "card_number",
+        "balance",
+    ]
 
 @admin.register(PrepaidCard)
 class PrepaidCardAdmin (admin.ModelAdmin):
-    pass
+    list_display = [
+        "barcode",
+        "value",
+    ]
+    search_fields = [
+        "barcode",
+        "value",
+    ]
 
 @admin.register(Vendor)
 class VendorAdmin (admin.ModelAdmin):
-    pass
+    list_display = [
+        "location",
+        "products",
+    ]
+    search_fields = [
+        "location",
+        "products",
+    ]
 
 
