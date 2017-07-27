@@ -5,6 +5,16 @@ from payment.models import Vendor, Product
 class IndexView(generic.ListView):
     model = Vendor
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        vendors = context["object_list"]
+        for vendor in vendors:
+            inventories = vendor.inventory_set.all()
+            vendor.product_names = [inventory.product.name for inventory in inventories]
+
+        context["vendors"] = vendors
+        return context
+
 
 class VendorView(generic.DetailView):
     model = Vendor
