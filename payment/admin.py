@@ -8,8 +8,16 @@ from payment.models import Product,UserCard, PrepaidCard, Vendor
 
 @admin.register(Product)
 class ProductAdmin (admin.ModelAdmin):
-    pass
-
+    list_display = [
+        "name",
+        "brand",
+        "price",
+    ]
+    search_fields = [
+        "name",
+        "brand",
+        "price",
+    ]
 @admin.register(UserCard)
 class UserCardAdmin (admin.ModelAdmin):
     pass
@@ -21,4 +29,5 @@ class PrepaidCardAdmin (admin.ModelAdmin):
 @admin.register(Vendor)
 class VendorAdmin (admin.ModelAdmin):
     pass
+
 
