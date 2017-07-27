@@ -6,9 +6,9 @@ from payment.models import Product, UserCard, PrepaidCard, Vendor
 # PrepaidCard
 # Vendor
 
-class VendorInLine (admin.StackedInLine):
-    model=Vendor.products.through
-
+class VendorInLine (admin.StackedInline):
+    model = Vendor.products.through
+    extra = 0
 
 @admin.register(Product)
 class ProductAdmin (admin.ModelAdmin):
