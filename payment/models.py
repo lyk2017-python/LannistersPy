@@ -51,4 +51,4 @@ class Vendor(models.Model):
     products = models.ManyToManyField(Product)
 
     def __str__(self):
-        return "{location}{id}".format(location=self.location, id=self.id)
+        return "{location}".format(location=self.location)
