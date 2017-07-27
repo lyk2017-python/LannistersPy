@@ -15,7 +15,10 @@ class Product(models.Model):
 
     def __str__(self):
         return "{name}".format(name=self.name)
-
+    #Model options
+    class Meta:
+        get_latest_by="name"
+        unique_together=("name", "brand")
 
 def uuidGenerator8():
     code = uuid.uuid4().hex
