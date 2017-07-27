@@ -14,7 +14,7 @@ class Product(models.Model):
     slug = models.SlugField()
 
     def __str__(self):
-        return "#{id} {name}".format(id=self.id, name=self.name)
+        return "{name}".format(name=self.name)
 
 
 def uuidGenerator8():
@@ -27,7 +27,7 @@ class PrepaidCard(models.Model):
     value = models.PositiveIntegerField()
 
     def __str__(self):
-        return "#{id} {barcode}".format(id=self.id, barcode=self.barcode)
+        return "{barcode}".format(barcode=self.barcode)
 
 
 def uuidGenerator16():
@@ -40,7 +40,7 @@ class UserCard(models.Model):
     balance = models.PositiveIntegerField(default=0)
 
     def __str__(self):
-        return "#{id} {card_number}".format(id=self.id, card_number=self.card_number)
+        return "{card_number}".format(card_number=self.card_number)
 
 
 class Vendor(models.Model):
@@ -48,4 +48,4 @@ class Vendor(models.Model):
     products = models.ManyToManyField(Product)
 
     def __str__(self):
-        return "#{id} {location}{vendor_id}".format(id=self.id, location=self.location, vendor_id=self.vendor_id)
+        return "{location}{vendor_id}".format(location=self.location, vendor_id=self.vendor_id)
