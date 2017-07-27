@@ -2,8 +2,10 @@
 
 {% block body %}
     {% for product in object.products.all %}
-        <div class="col-md-6 col-md-offset-3 text-center">
-            <a href="{% url "product" product_slug=product.slug %}">{{ product.name }}</a>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center">
+                <a href="{% url "product" product_slug=product.slug %}">{{ product.name }}</a>
+            </div>
         </div>
     {% endfor %}
 {% endblock %}
