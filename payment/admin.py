@@ -16,6 +16,7 @@ class ProductAdmin (admin.ModelAdmin):
         "name",
         "brand",
         "price",
+        "count",
     ]
     search_fields = [
         "name",
@@ -55,6 +56,7 @@ class PrepaidCardAdmin (admin.ModelAdmin):
 
 @admin.register(Vendor)
 class VendorAdmin (admin.ModelAdmin):
+    inlines = [VendorInLine]
     list_display = [
         "location",
     ]
