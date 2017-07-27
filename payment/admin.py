@@ -1,5 +1,5 @@
 from django.contrib import admin
-from payment.models import Product
+from payment.models import Product,UserCard, PrepaidCard, Vendor
 
 #Product
 #UserCard
@@ -8,5 +8,17 @@ from payment.models import Product
 
 @admin.register(Product)
 class ProductAdmin (admin.ModelAdmin):
+    pass
+
+@admin.register(UserCard)
+class UserCardAdmin (admin.ModelAdmin):
+    pass
+
+@admin.register(PrepaidCard)
+class PrepaidCardAdmin (admin.ModelAdmin):
+    pass
+
+@admin.register(Vendor)
+class VendorAdmin (admin.ModelAdmin):
     pass
 
