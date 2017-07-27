@@ -2,16 +2,18 @@
 
 {% block body %}
     <div class="row">
-        <div class="card-deck col-md-2 col-md-offset-5">
+        <div class="col-md-8 col-md-offset-2">
             {% for vendor in object_list %}
-                <div class="card">
-                    <img class="card-img-top" style="width: 100%;" src="https://scontent.fsaw1-5.fna.fbcdn.net/v/t1.0-9/10891946_704887549609418_3209293607941204607_n.png?oh=ccabf91c9e4f41e6f789f26ab2c975e4&oe=59F87972" alt="Card image cap">
-                    <div class="card-block">
-                        <a href="{% url "vendor" id=vendor.id %}"><h4 class="card-title">{{ vendor.location }}</h4></a>
-                        <p class="card-text">{% for product in vendor.products.all %}{{ product.name }}, {% endfor %}</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
+                <div class="card-deck col-md-3 col-md-offset-1" style="margin-bottom: 20px; background-color: #ebebeb; border-radius: 10px;">
+                    <div class="card">
+                        <img class="card-img-top" style="width: 100%; margin-top: 10px;" src="https://scontent.fsaw1-5.fna.fbcdn.net/v/t1.0-9/10891946_704887549609418_3209293607941204607_n.png?oh=ccabf91c9e4f41e6f789f26ab2c975e4&oe=59F87972" alt="Card image cap">
+                        <div class="card-block">
+                            <a href="{% url "vendor" id=vendor.id %}"><h4 class="card-title">{{ vendor.location }}</h4></a>
+                            <p class="card-text">{% for product in vendor.products.all %}{{ product.name }}, {% endfor %}</p>
+                        </div>
+                        <div class="card-footer" style="margin-bottom: 10px;">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
                     </div>
                 </div>
             {% endfor %}
