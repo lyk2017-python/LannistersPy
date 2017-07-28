@@ -32,3 +32,15 @@ class VendorView(generic.DetailView):
 class ProductView(generic.DetailView):
     model = Product
     slug_url_kwarg = 'product_slug'
+
+
+class ProductListView(generic.ListView):
+    model = Product
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        products = context["object_list"]
+        context["products"] = products
+        return context
+
+
