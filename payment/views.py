@@ -1,7 +1,8 @@
 from django.views import generic
 from payment.models import Vendor, Product
-from payment.forms import ContactForm
+from payment.forms import ContactForm,CommentForm
 from django.core.mail import send_mail
+from django.http import Http404
 
 class IndexView(generic.ListView):
     model = Vendor
@@ -30,16 +31,17 @@ class VendorView(generic.DetailView):
         return context
 
 
-class ProductView(generic.DetailView):
-    form_class = ContactForm
-    template_name = "payment/product_detail.html"
+class ProductView(generic.CreateView):
+    form_class = CommentForm
+    template_name = "payment/comment_create.html"
     success_url = "."
 
-    model = Product
-    slug_url_kwarg = 'product_slug'
-
-
-
+    def get_product(self):
+        query = Product.objects.filter(slug=self.kwargs["slug"])
+        if query.exists():
+            return query.get()
+        else:
+            raise Http404("Product not found")
 
 
 class ProductListView(generic.ListView):
@@ -71,3 +73,4 @@ class ContactFormView(generic.FormView):
             settings.DEFAULT_FROM_EMAIL, ["info@lannisterspy.com"])
 
         return super().form_valid(form)
+

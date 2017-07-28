@@ -1,5 +1,6 @@
 from django import forms
-
+from django.forms import HiddenInput
+from payment.models import Comment
 
 class ContactForm(forms.Form):
     email = forms.EmailField()
@@ -7,3 +8,14 @@ class ContactForm(forms.Form):
     body = forms.CharField(widget=forms.Textarea(attrs={"rows": 2}))
 
 
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        exclude = [
+            "id",
+            "product"
+        ]
+        widgets = {
+            "slug" : HiddenInput()
+}

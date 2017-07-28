@@ -1,5 +1,6 @@
 from django.db import models
 import uuid
+import datetime
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.template.defaultfilters import slugify
@@ -15,6 +16,7 @@ class Product(models.Model):
     slug = models.SlugField(unique=True, blank=True, null=False)
 
     def __str__(self):
+
         return "{name}".format(name=self.name)
     # Model options
 
@@ -63,6 +65,16 @@ class Inventory(models.Model):
 
     def __str__(self):
         return "{vendor} -> {product} #{count}".format(vendor=self.vendor, product=self.product, count=self.count)
+
+
+class Comment (models.Model):
+    created = models.DateTimeField(default=datetime.datetime.now)
+    message = models.TextField()
+    product = models.ForeignKey(Product)
+    # author field will be added
+
+    def __str__(self):
+        return "{message} ".format(message=self.message)
 
 @receiver(pre_save, sender=Product)
 def generate_slug(sender, instance, *args, **kwargs):
