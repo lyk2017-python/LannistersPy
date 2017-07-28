@@ -1,16 +1,19 @@
 
 from django.db import models
 import uuid
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
+from django.template.defaultfilters import slugify
 
 
 class Product(models.Model):
     name = models.CharField(max_length=150, unique=True)
-    price = models.FloatField()
-    brand = models.CharField(max_length=100)
-    description = models.TextField()
-    image = models.ImageField()
-    product_home = models.URLField()
-    slug = models.SlugField()
+    price = models.FloatField(blank=True, null=True)
+    brand = models.CharField(max_length=100, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    image = models.ImageField(blank=True, null=True)
+    product_home = models.URLField(blank=True, null=True)
+    slug = models.SlugField(unique=True, blank=True, null=False)
 
     def __str__(self):
         return "{name}".format(name=self.name)
@@ -61,3 +64,12 @@ class Inventory(models.Model):
 
     def __str__(self):
         return "{vendor} -> {product} #{count}".format(vendor=self.vendor, product=self.product, count=self.count)
+
+@receiver(pre_save, sender=Product)
+def generate_slug(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        if hasattr(sender, "name"):
+            instance.slug = slugify(instance.name)
+        else:
+            raise AttributeError("Name field is required for slug.")
+    return instance
