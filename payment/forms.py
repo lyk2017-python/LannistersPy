@@ -14,7 +14,6 @@ class CommentForm(forms.ModelForm):
         model = Comment
         exclude = [
             "id",
-            "product"
         ]
         widgets = {
             "slug" : HiddenInput()
