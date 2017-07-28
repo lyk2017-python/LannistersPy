@@ -1,4 +1,3 @@
-
 from django.db import models
 import uuid
 from django.db.models.signals import pre_save
