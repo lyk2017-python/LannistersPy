@@ -88,3 +88,15 @@ def generate_slug(sender, instance, *args, **kwargs):
 
 class ExtendedUser(AbstractUser):
     card = models.OneToOneField(UserCard, null=True)
+
+
+class Transaction(models.Model):
+    prepaid_card = models.ForeignKey(PrepaidCard)
+    user_card = models.ForeignKey(UserCard)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "{prepaid} -> {user}".format(prepaid=self.prepaid_card, user=self.user_card)
+
+    class Meta:
+        get_latest_by = "date"
