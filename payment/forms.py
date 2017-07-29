@@ -50,5 +50,6 @@ class CardForm(forms.Form):
         with transaction.atomic():
             cd.balance = F("balance") + pcd.value
             cd.save(update_fields=["balance"])
-            pcd.delete()
-        return cd
+            pcd.is_used = True
+            pcd.save(update_fields=["is_used"])
+        return cd, pcd
