@@ -38,10 +38,10 @@ class CardForm(forms.Form):
     def clean_prepaid_card(self):
         x = self.data.get("prepaid_card")
         pc = PrepaidCard.objects.filter(barcode=x)
-        if pc.exists():
+        if pc.exists() and not pc.first().is_used:
             return pc.first()
         else:
-            raise forms.ValidationError("Prepaid Card Not Found.")
+            raise forms.ValidationError("Prepaid Card Not Found or Already Used.")
 
     def save(self):
         user_card = self.cleaned_data["user_card"]

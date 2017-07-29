@@ -44,7 +44,6 @@ class UserCard(models.Model):
 class PrepaidCard(models.Model):
     barcode = models.CharField(max_length=8, default=uuid_generator8, unique=True)
     value = models.PositiveIntegerField()
-    user_card = models.ForeignKey(UserCard, blank=True, null=True)
     is_used = models.BooleanField(default=False)
 
     def __str__(self):
