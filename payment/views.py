@@ -1,5 +1,5 @@
 from django.views import generic
-from payment.models import Vendor, Product, PrepaidCard, UserCard
+from payment.models import Vendor, Product, Transaction
 from payment.forms import ContactForm, CommentForm, CardForm
 from django.core.mail import send_mail
 from django.http import Http404
@@ -68,6 +68,16 @@ class ProductListView(generic.ListView):
         context = super().get_context_data(**kwargs)
         products = context["object_list"]
         context["products"] = products
+        return context
+
+
+class TransactionListView(generic.ListView):
+    model = Transaction
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        transactions = context["object_list"]
+        context["transactions"] = transactions
         return context
 
 

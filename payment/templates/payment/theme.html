@@ -25,13 +25,15 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     {% url "index" as index_url %}
-                    <li {% if request.path == index_url %}class="active"{% endif %}><a href="/">Vendors <span class="sr-only">(current)</span></a></li>
+                    <li {% if request.path == index_url %}class="active"{% endif %}><a href="/">Vendors </a></li>
                     {% url "products" as products_url %}
-                    <li  {% if request.path == products_url %}class="active"{% endif %}><a href="{% url "products" %}">Products <span class="sr-only">(current)</span></a></li>
+                    <li  {% if request.path == products_url %}class="active"{% endif %}><a href="{% url "products" %}">Products </a></li>
                     {% url "contact" as contact_url %}
-                    <li  {% if request.path == contact_url %}class="active"{% endif %}><a href="{% url "contact" %}">Contact <span class="sr-only">(current)</span></a></li>
+                    <li  {% if request.path == contact_url %}class="active"{% endif %}><a href="{% url "contact" %}">Contact </a></li>
                     {% url "card" as card_url %}
-                    <li  {% if request.path == card_url %}class="active"{% endif %}><a href="{% url "card" %}">Reload <span class="sr-only">(current)</span></a></li>
+                    <li  {% if request.path == card_url %}class="active"{% endif %}><a href="{% url "card" %}">Reload </a></li>
+                    {% url "transactions" as transactions_url %}
+                    <li  {% if request.path == transactions_url %}class="active"{% endif %}><a href="{% url "transactions" %}">Transactions </a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
