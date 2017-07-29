@@ -24,8 +24,8 @@ class CommentForm(forms.ModelForm):
 
 
 class CardForm(forms.Form):
-    prepaid_card = forms.CharField(max_length=16, min_length=16)
-    user_card = forms.CharField(max_length=8, min_length=8)
+    prepaid_card = forms.CharField(max_length=8, min_length=8)
+    user_card = forms.CharField(max_length=16, min_length=16)
 
     def clean_user_card(self):
         x = self.data.get("user_card")
