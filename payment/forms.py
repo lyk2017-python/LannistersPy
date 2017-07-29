@@ -1,5 +1,5 @@
 from django import forms
-from payment.models import Comment
+from payment.models import Comment, Inventory
 
 
 class ContactForm(forms.Form):
@@ -11,6 +11,7 @@ class ContactForm(forms.Form):
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
+
         exclude = [
             "id",
         ]
