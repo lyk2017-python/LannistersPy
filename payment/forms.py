@@ -16,6 +16,5 @@ class CommentForm(forms.ModelForm):
             "id",
         ]
         widgets = {
-            "slug": HiddenInput(),
-            "product": HiddenInput()
+
         }

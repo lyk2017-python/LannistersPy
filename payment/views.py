@@ -1,8 +1,9 @@
 from django.views import generic
 from payment.models import Vendor, Product
-from payment.forms import ContactForm,CommentForm
+from payment.forms import ContactForm, CommentForm
 from django.core.mail import send_mail
 from django.http import Http404
+
 
 class IndexView(generic.ListView):
     model = Vendor
@@ -42,12 +43,13 @@ class ProductView(generic.CreateView):
             return query.get()
         else:
             raise Http404("Product not found")
+        return product
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         if self.request.method in ["POST", "PUT"]:
             post_data = kwargs["data"].copy()
-            post_data["product"] = self.get_product()
+            post_data["comment"] = self.get_product()
             kwargs["data"] = post_data
         return kwargs
 
@@ -55,8 +57,6 @@ class ProductView(generic.CreateView):
         context = super().get_context_data(**kwargs)
         context["object"] = self.get_product()
         return context
-
-
 
 
 class ProductListView(generic.ListView):
@@ -88,4 +88,3 @@ class ContactFormView(generic.FormView):
             settings.DEFAULT_FROM_EMAIL, ["info@lannisterspy.com"])
 
         return super().form_valid(form)
-

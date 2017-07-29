@@ -73,7 +73,7 @@ class Comment(models.Model):
     # author field will be added
 
     def __str__(self):
-        return "{message} ".format(message=self.message)
+        return "{message}".format(message=self.message)
 
 
 @receiver(pre_save, sender=Product)
