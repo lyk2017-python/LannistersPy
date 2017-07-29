@@ -16,12 +16,10 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-6 col-md-offset-3 card-bg">
-        <ul>
-            {% for comment in object.comment_set.all %}
-                <li>
-                    {{comment.message}}
-                </li>
+    <div class="col-md-6 col-md-offset-3">
+        <ul class="list-group">
+            {% for comment in comments %}
+                <li class="list-group-item card-bg">{{ comment.message }}</li>
             {% endfor %}
         </ul>
     </div>
