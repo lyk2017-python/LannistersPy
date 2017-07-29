@@ -1,7 +1,5 @@
-from django.contrib.auth.models import AbstractUser
 from django.db import models
 import uuid
-import datetime
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.template.defaultfilters import slugify
@@ -28,6 +26,7 @@ class Product(models.Model):
 def uuid_generator8():
     code = uuid.uuid4().hex
     return code[:8]
+
 
 def uuid_generator16():
     code = uuid.uuid4().hex
