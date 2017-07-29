@@ -37,6 +37,8 @@ class ProductView(generic.CreateView):
     success_url = "."
 
 
+
+
 class ProductListView(generic.ListView):
     model = Product
 
