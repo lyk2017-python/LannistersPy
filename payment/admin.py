@@ -1,5 +1,5 @@
 from django.contrib import admin
-from payment.models import Product, UserCard, PrepaidCard, Vendor, Inventory
+from payment.models import *
 
 
 class VendorInline(admin.StackedInline):
@@ -42,10 +42,16 @@ class PrepaidCardAdmin(admin.ModelAdmin):
     list_display = [
         "barcode",
         "value",
+        "is_used"
     ]
     search_fields = [
         "barcode",
         "value",
+        "is_used"
+    ]
+    list_filter = [
+        "value",
+        "is_used"
     ]
 
 
@@ -60,4 +66,11 @@ class VendorAdmin(admin.ModelAdmin):
     ]
     list_filter = [
         "location"  # Filters in list screen.
+    ]
+
+@admin.register(Transaction)
+class TransactionAdmin(admin.ModelAdmin):
+    list_display = [
+        "prepaid_card",
+        "user_card",
     ]
