@@ -28,15 +28,6 @@ def uuid_generator8():
     code = uuid.uuid4().hex
     return code[:8]
 
-
-class PrepaidCard(models.Model):
-    barcode = models.CharField(max_length=8, default=uuid_generator8, unique=True)
-    value = models.PositiveIntegerField()
-
-    def __str__(self):
-        return "{barcode}".format(barcode=self.barcode)
-
-
 def uuid_generator16():
     code = uuid.uuid4().hex
     return code[:16]
@@ -48,6 +39,15 @@ class UserCard(models.Model):
 
     def __str__(self):
         return "{card_number}".format(card_number=self.card_number)
+
+
+class PrepaidCard(models.Model):
+    barcode = models.CharField(max_length=8, default=uuid_generator8, unique=True)
+    value = models.PositiveIntegerField()
+    user_card = models.ForeignKey(UserCard, blank=True, null=True)
+
+    def __str__(self):
+        return "{barcode}".format(barcode=self.barcode)
 
 
 class Vendor(models.Model):

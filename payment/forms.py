@@ -18,8 +18,3 @@ class CommentForm(forms.ModelForm):
         widgets = {
             "product":forms.HiddenInput()
         }
-
-
-class CardForm(forms.Form):
-    user_card = forms.CharField(max_length=16)
-    prepaid_card = forms.CharField(max_length=8)
