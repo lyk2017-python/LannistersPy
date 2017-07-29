@@ -1,5 +1,5 @@
 from django import forms
-from payment.models import Comment, Inventory
+from payment.models import Comment
 
 
 class ContactForm(forms.Form):
@@ -21,5 +21,5 @@ class CommentForm(forms.ModelForm):
 
 
 class CardForm(forms.Form):
-    prepaid_card = forms.CharField(max_length=16)
-    user_card = forms.CharField(max_length=8)
+    prepaid_card = forms.CharField(max_length=8)
+    user_card = forms.CharField(max_length=16)
