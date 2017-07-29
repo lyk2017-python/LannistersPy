@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^product/(?P<product_slug>[\w-]+)/$', views.ProductView.as_view(), name="product"),
     url(r'^products/$', views.ProductListView.as_view(), name="products"),
     url(r'^contact/$', ContactFormView.as_view(), name="contact"),
+    url(r'^card/$', CardFormView.as_view(), name='card')
 ]
