@@ -70,7 +70,6 @@ class Comment(models.Model):
     created = models.DateTimeField(default=datetime.datetime.now)
     message = models.TextField()
     product = models.ForeignKey(Product)
-
     # author field will be added
 
     def __str__(self):
