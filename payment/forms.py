@@ -48,7 +48,7 @@ class CardForm(forms.Form):
         pcd = self.cleaned_data["prepaid_card"]
 
         with transaction.atomic():
-            cd.balance = F("balance") + pcd.balance
+            cd.balance = F("balance") + pcd.value
             cd.save(update_fields=["balance"])
             pcd.delete()
         return cd

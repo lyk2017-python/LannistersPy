@@ -94,3 +94,7 @@ class CardFormView(generic.FormView):
     form_class = CardForm
     template_name = "payment/card.html"
     success_url = "."
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
