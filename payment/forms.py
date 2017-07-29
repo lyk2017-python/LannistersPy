@@ -44,12 +44,13 @@ class CardForm(forms.Form):
             raise forms.ValidationError("Prepaid Card Not Found.")
 
     def save(self):
-        cd = self.cleaned_data["user_card"]
-        pcd = self.cleaned_data["prepaid_card"]
+        user_card = self.cleaned_data["user_card"]
+        prepaid_card = self.cleaned_data["prepaid_card"]
 
         with transaction.atomic():
-            cd.balance = F("balance") + pcd.value
-            cd.save(update_fields=["balance"])
-            pcd.is_used = True
-            pcd.save(update_fields=["is_used"])
-        return cd, pcd
+            user_card.balance = F("balance") + prepaid_card.value
+            user_card.save(update_fields=["balance"])
+            prepaid_card.is_used = True
+            prepaid_card.save(update_fields=["is_used"])
+            t = Transaction.objects.create(user_card=user_card, prepaid_card=prepaid_card)
+        return t
