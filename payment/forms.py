@@ -16,4 +16,5 @@ class CommentForm(forms.ModelForm):
             "id",
         ]
         widgets = {
+            "product":forms.HiddenInput()
         }

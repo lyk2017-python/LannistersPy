@@ -5,7 +5,7 @@ import datetime
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.template.defaultfilters import slugify
-
+from django.contrib.auth.models import AbstractUser
 
 class Product(models.Model):
     name = models.CharField(max_length=150, unique=True)
@@ -67,7 +67,7 @@ class Inventory(models.Model):
 
 
 class Comment(models.Model):
-    created = models.DateTimeField(default=datetime.datetime.now)
+    created = models.DateTimeField(auto_now_add=True)
     message = models.TextField()
     product = models.ForeignKey(Product)
     # author field will be added

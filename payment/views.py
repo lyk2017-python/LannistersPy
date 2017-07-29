@@ -46,13 +46,12 @@ class ProductView(generic.CreateView):
             return query.get()
         else:
             raise Http404("Product not found")
-        return product
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         if self.request.method in ["POST", "PUT"]:
             post_data = kwargs["data"].copy()
-            post_data["comment"] = self.get_product()
+            post_data["product"] = self.get_product().id
             kwargs["data"] = post_data
         return kwargs
 
