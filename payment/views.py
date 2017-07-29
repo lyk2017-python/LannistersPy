@@ -37,6 +37,9 @@ class ProductView(generic.CreateView):
     template_name = "payment/comment_create.html"
     success_url = "."
 
+    # def get_initial(self):
+
+
     def get_product(self):
         query = Product.objects.filter(slug=self.kwargs["product_slug"])
         if query.exists():

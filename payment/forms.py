@@ -16,5 +16,4 @@ class CommentForm(forms.ModelForm):
             "id",
         ]
         widgets = {
-
         }
