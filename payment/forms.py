@@ -1,5 +1,4 @@
 from django import forms
-from django.forms import HiddenInput
 from payment.models import Comment
 
 
@@ -16,5 +15,5 @@ class CommentForm(forms.ModelForm):
             "id",
         ]
         widgets = {
-            "product":forms.HiddenInput()
+            "product": forms.HiddenInput()
         }

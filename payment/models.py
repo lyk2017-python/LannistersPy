@@ -7,6 +7,7 @@ from django.dispatch import receiver
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import AbstractUser
 
+
 class Product(models.Model):
     name = models.CharField(max_length=150, unique=True)
     price = models.FloatField(blank=True, null=True)

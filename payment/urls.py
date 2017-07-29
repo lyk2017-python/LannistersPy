@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from payment import views
-from payment.views import ContactFormView
+from payment.views import ContactFormView, CardFormView
 
 urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name="index"),
