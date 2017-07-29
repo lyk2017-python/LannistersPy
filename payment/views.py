@@ -57,6 +57,8 @@ class ProductView(generic.CreateView):
         return context
 
 
+
+
 class ProductListView(generic.ListView):
     model = Product
 
