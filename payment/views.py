@@ -36,26 +36,6 @@ class ProductView(generic.CreateView):
     template_name = "payment/comment_create.html"
     success_url = "."
 
-    def get_product(self):
-        query = Product.objects.filter(slug=self.kwargs["slug"])
-        if query.exists():
-            return query.get()
-        else:
-            raise Http404("Product not found")
-
-        def get_form_kwargs(self):
-            kwargs = super().get_form_kwargs()
-            if self.request.method in ["POST", "PUT"]:
-                post_data = kwargs["data"].copy()
-                post_data["products"] = [self.get_product()]
-                kwargs["data"] = post_data
-            return kwargs
-
-        def get_context_data(self, **kwargs):
-            context = super().get_context_data(**kwargs)
-            context["object"] = self.get_category()
-            return context
-
 
 class ProductListView(generic.ListView):
     model = Product
