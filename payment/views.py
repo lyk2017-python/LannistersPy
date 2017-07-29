@@ -94,11 +94,3 @@ class CardFormView(generic.FormView):
     form_class = CardForm
     template_name = "payment/card.html"
     success_url = "."
-
-    def form_valid(self, form):
-        data = form.cleaned_data
-        user = UserCard.objects.get(card_number=data["user_card"])
-        prepaid = PrepaidCard.objects.get(barcode=data["prepaid_card"])
-        user.balance += prepaid.value
-        user.save()
-        return super().form_valid(form)
