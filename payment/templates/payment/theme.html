@@ -30,6 +30,8 @@
                     <li  {% if request.path == products_url %}class="active"{% endif %}><a href="{% url "products" %}">Products <span class="sr-only">(current)</span></a></li>
                     {% url "contact" as contact_url %}
                     <li  {% if request.path == contact_url %}class="active"{% endif %}><a href="{% url "contact" %}">Contact <span class="sr-only">(current)</span></a></li>
+                    {% url "card" as card_url %}
+                    <li  {% if request.path == card_url %}class="active"{% endif %}><a href="{% url "card" %}">Reload <span class="sr-only">(current)</span></a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
