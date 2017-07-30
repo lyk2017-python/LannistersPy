@@ -1,8 +1,6 @@
 from django.conf.urls import url
 from payment import views
 from payment.views import ContactFormView, CardFormView, TransactionListView, FaqView
-from django.conf import settings
-from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name="index"),
