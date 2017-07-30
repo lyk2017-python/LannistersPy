@@ -8,6 +8,7 @@ class VendorInline(admin.StackedInline):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
+    exclude = ('slug',)
     list_display = [
         "name",
         "brand",
@@ -39,6 +40,7 @@ class UserCardAdmin(admin.ModelAdmin):
 
 @admin.register(PrepaidCard)
 class PrepaidCardAdmin(admin.ModelAdmin):
+    exclude = ('is_used',)
     list_display = [
         "barcode",
         "value",
@@ -66,11 +68,4 @@ class VendorAdmin(admin.ModelAdmin):
     ]
     list_filter = [
         "location"  # Filters in list screen.
-    ]
-
-@admin.register(Transaction)
-class TransactionAdmin(admin.ModelAdmin):
-    list_display = [
-        "prepaid_card",
-        "user_card",
     ]
