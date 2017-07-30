@@ -1,22 +1,24 @@
 {% extends "payment/theme.html" %}
 
 {% block body %}
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1">
-            {% for vendor in vendors %}
-                <div class="card-deck col-md-3 col-md-offset-1 card-bg">
-                    <div class="card">
-                        <img class="card-img-top fullwidth" style="margin-top: 10px;" src="{{ vendor.image.url }}" alt="Card image cap">
-                        <div class="card-block">
-                            <a href="{% url "vendor" id=vendor.id %}"><h4 class="card-title">{{ vendor.location|title }}</h4></a>
-                            <p class="card-text">{{ vendor.product_names|join:", "|title }}</p>
-                        </div>
-                        <div class="card-footer" style="margin-bottom: 10px;">
-                            <small class="text-muted">{{ vendor.stock_count }} products in stock.</small>
+    <div class="container">
+        <div class="row">
+            <div class="card-deck">
+                {% for vendor in vendors %}
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="card card-bg">
+                            <img class="card-img-top full-width" src="{{ vendor.image.url }}" alt="{{ vendor.location }} Image">
+                            <div class="card-block">
+                                <a href="{% url "vendor" id=vendor.id %}"><h4 class="card-title">{{ vendor.location|title }}</h4></a>
+                                <p class="card-text">{{ vendor.product_names|join:", "|title }}</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">{{ vendor.stock_count }} products in stock.</small>
+                            </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
     </div>
 {% endblock %}

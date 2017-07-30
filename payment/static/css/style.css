@@ -1,13 +1,16 @@
-.fullwidth {
+.full-width {
     width: 100%;
 }
 
 .card-bg {
     margin-bottom: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 20px 20px 10px 20px;
     background-color: #ebebeb;
     border-radius: 10px;
+}
+
+.card-footer {
+    border-top: 1px solid rgba(0, 0, 0, .125);
 }
 
 body {
