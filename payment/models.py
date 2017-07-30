@@ -11,7 +11,7 @@ class Product(models.Model):
     price = models.FloatField(blank=True, null=True)
     brand = models.CharField(max_length=100, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
-    image = models.ImageField(blank=True, null=True)
+    image = models.ImageField(blank=True, null=False, upload_to="uploaded", default="img/itugnu.png")
     product_home = models.URLField(blank=True, null=True)
     slug = models.SlugField(unique=True, blank=True, null=False)
 
