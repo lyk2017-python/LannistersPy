@@ -6,7 +6,7 @@
             {% for vendor in vendors %}
                 <div class="card-deck col-md-3 col-md-offset-1 card-bg">
                     <div class="card">
-                        <img class="card-img-top fullwidth" style="margin-top: 10px;" src="https://scontent.fsaw1-5.fna.fbcdn.net/v/t1.0-9/10891946_704887549609418_3209293607941204607_n.png?oh=ccabf91c9e4f41e6f789f26ab2c975e4&oe=59F87972" alt="Card image cap">
+                        <img class="card-img-top fullwidth" style="margin-top: 10px;" src="{{ vendor.image.url }}" alt="Card image cap">
                         <div class="card-block">
                             <a href="{% url "vendor" id=vendor.id %}"><h4 class="card-title">{{ vendor.location|title }}</h4></a>
                             <p class="card-text">{{ vendor.product_names|join:", "|title }}</p>

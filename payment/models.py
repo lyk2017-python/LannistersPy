@@ -52,6 +52,7 @@ class PrepaidCard(models.Model):
 
 class Vendor(models.Model):
     location = models.CharField(max_length=50)
+    image = models.ImageField(blank=True, null=False, upload_to="uploaded", default="img/itugnu.png")
 
     def __str__(self):
         return "{location}".format(location=self.location)
