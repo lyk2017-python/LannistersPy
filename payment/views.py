@@ -110,4 +110,4 @@ class CardFormView(generic.FormView):
         return super().form_valid(form)
 
 class FaqView(generic.TemplateView):
-    template_name = faq.html
+    template_name = "payment/faq.html"
