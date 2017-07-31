@@ -24,7 +24,7 @@ class Product(models.Model):
         return "{name}".format(name=self.name)
 
     def get_image_url(self):
-        if self.image.field.null:
+        if not self.image:
             return static("img/itugnu.png")
         else:
             return self.image.url
@@ -65,7 +65,7 @@ class Vendor(models.Model):
         return "{location}".format(location=self.location)
 
     def get_image_url(self):
-        if self.image.field.null:
+        if not self.image:
             return static("img/itugnu.png")
         else:
             return self.image.url
