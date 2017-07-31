@@ -14,6 +14,7 @@
                             </div>
                             <div class="card-footer">
                                 <small class="text-muted">{{ vendor.stock_count }} products in stock.</small>
+                                <button onclick="deneme('{{vendor.location}}')" class="btn btn-default">Button</button>
                             </div>
                         </div>
                     </div>
@@ -21,4 +22,9 @@
             </div>
         </div>
     </div>
+    <script>
+        function deneme(location) {
+            alert(location);
+        }
+    </script>
 {% endblock %}
