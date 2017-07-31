@@ -4,6 +4,7 @@ from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import AbstractUser
+from django.contrib.staticfiles.templatetags.staticfiles import static
 
 
 class Product(models.Model):
@@ -11,16 +12,22 @@ class Product(models.Model):
     price = models.FloatField(blank=True, null=True)
     brand = models.CharField(max_length=100, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
-    image = models.ImageField(blank=True, null=False, upload_to="uploaded", default="img/itugnu.png")
+    image = models.ImageField(blank=True, null=True, upload_to="uploaded")
     product_home = models.URLField(blank=True, null=True)
     slug = models.SlugField(unique=True, blank=True, null=False)
-
-    def __str__(self):
-        return "{name}".format(name=self.name)
 
     class Meta:
         get_latest_by = "name"
         unique_together = ("name", "brand")
+
+    def __str__(self):
+        return "{name}".format(name=self.name)
+
+    def get_image_url(self):
+        if self.image.field.null:
+            return static("img/itugnu.png")
+        else:
+            return self.image.url
 
 
 def uuid_generator8():
@@ -58,10 +65,11 @@ class Vendor(models.Model):
         return "{location}".format(location=self.location)
 
     def get_image_url(self):
-        if self.image is None:
-            return "/static/img/itugnu.png"
+        if self.image.field.null:
+            return static("img/itugnu.png")
         else:
             return self.image.url
+
 
 class Inventory(models.Model):
     vendor = models.ForeignKey(Vendor)
@@ -104,8 +112,8 @@ class Transaction(models.Model):
     user_card = models.ForeignKey(UserCard)
     date = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return "{prepaid} -> {user}".format(prepaid=self.prepaid_card, user=self.user_card)
-
     class Meta:
         get_latest_by = "date"
+
+    def __str__(self):
+        return "{prepaid} -> {user}".format(prepaid=self.prepaid_card, user=self.user_card)
