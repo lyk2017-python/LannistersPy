@@ -61,7 +61,10 @@ class Vendor(models.Model):
 class Inventory(models.Model):
     vendor = models.ForeignKey(Vendor)
     product = models.ForeignKey(Product)
-    count = models.PositiveIntegerField(default=0)
+    count = models.PositiveIntegerField(default=1)
+
+    class Meta:
+        unique_together = ("product", "vendor")
 
     def __str__(self):
         return "{vendor} -> {product} #{count}".format(vendor=self.vendor, product=self.product, count=self.count)
