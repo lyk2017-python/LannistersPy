@@ -52,11 +52,16 @@ class PrepaidCard(models.Model):
 
 class Vendor(models.Model):
     location = models.CharField(max_length=50)
-    image = models.ImageField(blank=True, null=False, upload_to="uploaded", default="img/itugnu.png")
+    image = models.ImageField(blank=True, null=True, upload_to="uploaded")
 
     def __str__(self):
         return "{location}".format(location=self.location)
 
+    def get_image_url(self):
+        if self.image is None:
+            return "/static/img/itugnu.png"
+        else:
+            return self.image.url
 
 class Inventory(models.Model):
     vendor = models.ForeignKey(Vendor)
