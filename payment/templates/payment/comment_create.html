@@ -3,7 +3,7 @@
 {% block body %}
 <div class="row">
     <div class="card mb-3 col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1 text-center card-bg">
-        <img class="card-img-top full-width" style="height: 100px; object-fit: cover; margin-top: 10px;"
+        <img class="card-img-top full-width" style="max-height: 200px; object-fit: cover;"
              src="{{ object.image.url }}"
              alt="Card image cap">
         <div class="card-block">
@@ -19,7 +19,7 @@
     <div class="col-md-6 col-md-offset-3">
         <ul class="list-group">
             {% for comment in comments %}
-                <li class="list-group-item card-bg">{{ comment.message }}<br>{{ comment.created}}</li>
+                <li class="list-group-item card-bg">{{ comment.message }}<br>{{ comment.created }}</li>
             {% endfor %}
         </ul>
     </div>
@@ -28,7 +28,7 @@
     <div class="col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1 card-bg">
         <form action="." method="POST">
             {% csrf_token %}
-            {{form.as_p}}
+            {{form.as_p|bootstrap}}
             <button type="submit">Save</button>
         </form>
     </div>
