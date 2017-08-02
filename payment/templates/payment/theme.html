@@ -45,7 +45,7 @@
                        <li  {% if request.path == logout_url %}class="active"{% endif %}><a href="{% url "logout" %}">LOGOUT </a></li>
                     {% else %}
                         {% url "login" as login_url %}
-                        <li  {% if request.path == login_url %}class="active"{% endif %}><a href="{% url "login" %}">LOGIN </a></li>
+                        <li  {% if request.path == login_url %}class="active"{% endif %}><a href="{% url "login" %}">Login </a></li>
                         {% url "signup" as signup_url %}
                         <li  {% if request.path == signup_url %}class="active"{% endif %}><a href="{% url "signup" %}">Sign Up </a></li>
                     {% endif %}
