@@ -62,7 +62,7 @@ class CustomUserCreationForm(UserCreationForm):
         model = get_user_model()
 
     def save(self, commit=True):
-        user = super(UserCreationForm, self).save(commit=False)
+        user = super().save(commit=False)
         user.card = UserCard.objects.create()
         if commit:
             user.save()
