@@ -42,8 +42,8 @@
                 <ul class="nav navbar-nav navbar-right">
                     {% if request.user.is_authenticated %}
                         {% url "logout" as logout_url %}
-                       <li  {% if request.path == logout_url %}class="active"{% endif %}><a href="{% url "logout" %}">LOGOUT </a></li>
-                    <li><a>Welcome {{request.user.username|title}} | {{request.user.card}}</a></li>
+                       <li  {% if request.path == logout_url %}class="active"{% endif %}><a href="{% url "logout" %}">Logout </a></li>
+                    <li><a>Welcome {{request.user.username}} | {{request.user.card}}</a></li>
                     {% else %}
                         {% url "login" as login_url %}
                         <li  {% if request.path == login_url %}class="active"{% endif %}><a href="{% url "login" %}">Login </a></li>
