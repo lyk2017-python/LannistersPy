@@ -1,5 +1,5 @@
 from django.views import generic
-from payment.models import Vendor, Product, Transaction
+from payment.models import Vendor, Product, Transaction, UserCard
 from payment.forms import ContactForm, CommentForm, CardForm, CustomUserCreationForm
 from django.core.mail import send_mail
 from django.http import Http404
