@@ -4,7 +4,9 @@ from payment.forms import ContactForm, CommentForm, CardForm
 from django.core.mail import send_mail
 from django.http import Http404
 from django.conf import settings
-
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 
 class IndexView(generic.ListView):
     model = Vendor
@@ -71,8 +73,18 @@ class ProductListView(generic.ListView):
         return context
 
 
+class LoginCreateView(LoginRequiredMixin, generic.CreateView):
+    pass
+
+
 class TransactionListView(generic.ListView):
     model = Transaction
+
+
+    @method_decorator(login_required)
+    def post(self, request, *a, **kw):
+        return super().post(request, *a, **kw)
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
