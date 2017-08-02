@@ -77,3 +77,11 @@ class UserAdmin(admin.ModelAdmin):
         "password",
         "card"
     ]
+
+@admin.register(Transaction)
+class TransactionAdmin(admin.ModelAdmin):
+    list_display = [
+        "prepaid_card",
+        "user_card",
+        "date"
+    ]
