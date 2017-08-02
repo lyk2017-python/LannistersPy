@@ -46,6 +46,8 @@
                     {% else %}
                         {% url "login" as login_url %}
                         <li  {% if request.path == login_url %}class="active"{% endif %}><a href="{% url "login" %}">LOGIN </a></li>
+                        {% url "signup" as signup_url %}
+                        <li  {% if request.path == signup_url %}class="active"{% endif %}><a href="{% url "signup" %}">Sign Up </a></li>
                     {% endif %}
                 </ul>
             </div><!-- /.navbar-collapse -->

@@ -1,6 +1,6 @@
 from django.views import generic
 from payment.models import Vendor, Product, Transaction
-from payment.forms import ContactForm, CommentForm, CardForm
+from payment.forms import ContactForm, CommentForm, CardForm, CustomUserCreationForm
 from django.core.mail import send_mail
 from django.http import Http404
 from django.conf import settings
@@ -123,3 +123,13 @@ class CardFormView(generic.FormView):
 
 class FaqView(generic.TemplateView):
     template_name = "payment/faq.html"
+
+
+class RegistrationView(generic.FormView):
+    form_class = CustomUserCreationForm
+    template_name = "payment/signup.html"
+    success_url = "/"
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)

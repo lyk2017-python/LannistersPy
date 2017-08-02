@@ -1,4 +1,6 @@
 from django import forms
+from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
 from django.db.models import F
 
@@ -54,3 +56,7 @@ class CardForm(forms.Form):
             prepaid_card.save(update_fields=["is_used"])
             t = Transaction.objects.create(user_card=user_card, prepaid_card=prepaid_card)
         return t
+
+class CustomUserCreationForm(UserCreationForm):
+    class Meta(UserCreationForm.Meta):
+        model = get_user_model()
