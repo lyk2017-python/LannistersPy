@@ -69,3 +69,11 @@ class VendorAdmin(admin.ModelAdmin):
     list_filter = [
         "location"  # Filters in list screen.
     ]
+
+@admin.register(ExtendedUser)
+class UserAdmin(admin.ModelAdmin):
+    list_display = [
+        "username",
+        "password",
+        "card"
+    ]
