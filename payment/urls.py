@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from payment import views
-from payment.views import ContactFormView, CardFormView, TransactionListView, FaqView, RegistrationView
+from payment.views import ContactFormView, CardFormView, FaqView, RegistrationView
 
 urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name="index"),
@@ -9,7 +9,6 @@ urlpatterns = [
     url(r'^products/$', views.ProductListView.as_view(), name="products"),
     url(r'^contact/$', ContactFormView.as_view(), name="contact"),
     url(r'^card/$', CardFormView.as_view(), name='card'),
-    url(r'^transactions/$', TransactionListView.as_view(), name='transactions'),
     url(r'^faq/$', FaqView.as_view(), name='faq'),
     url(r'^signup/$', RegistrationView.as_view(), name='signup'),
     url(r'^profile/(?P<profile_slug>[\w-]+)/$', views.UserDetailView.as_view(), name="profile")

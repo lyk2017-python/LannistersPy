@@ -28,16 +28,12 @@
                     <li {% if request.path == index_url %}class="active"{% endif %}><a href="/">Vendors </a></li>
                     {% url "products" as products_url %}
                     <li  {% if request.path == products_url %}class="active"{% endif %}><a href="{% url "products" %}">Products </a></li>
-                    {% url "contact" as contact_url %}
-                    <li  {% if request.path == contact_url %}class="active"{% endif %}><a href="{% url "contact" %}">Contact </a></li>
                     {% url "card" as card_url %}
                     <li  {% if request.path == card_url %}class="active"{% endif %}><a href="{% url "card" %}">Reload </a></li>
-                    {% if request.user.is_authenticated %}
-                        {% url "transactions" as transactions_url %}
-                         <li  {% if request.path == transactions_url %}class="active"{% endif %}><a href="{% url "transactions" %}">Transactions </a></li>
-                    {% endif %}
                     {% url "faq" as faq_url %}
                     <li  {% if request.path == faq_url %}class="active"{% endif %}><a href="{% url "faq" %}">F.A.Q </a></li>
+                    {% url "contact" as contact_url %}
+                    <li  {% if request.path == contact_url %}class="active"{% endif %}><a href="{% url "contact" %}">Contact </a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if request.user.is_authenticated %}
