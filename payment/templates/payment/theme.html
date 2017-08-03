@@ -37,14 +37,14 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if request.user.is_authenticated %}
+                        <li><a href="{% url "profile" profile_slug=request.user.username %}">Welcome {{request.user.username|title}} | {{request.user.card}}</a></li>
                         {% url "logout" as logout_url %}
-                       <li  {% if request.path == logout_url %}class="active"{% endif %}><a href="{% url "logout" %}">Logout </a></li>
-                    <li><a href="{% url "profile" profile_slug=request.user.username %}">Welcome {{request.user.username|title}} | {{request.user.card}}</a></li>
+                        <li  {% if request.path == logout_url %}class="active"{% endif %}><a href="{% url "logout" %}">Logout </a></li>
                     {% else %}
-                        {% url "login" as login_url %}
-                        <li  {% if request.path == login_url %}class="active"{% endif %}><a href="{% url "login" %}">Login </a></li>
                         {% url "signup" as signup_url %}
                         <li  {% if request.path == signup_url %}class="active"{% endif %}><a href="{% url "signup" %}">Sign Up </a></li>
+                        {% url "login" as login_url %}
+                        <li  {% if request.path == login_url %}class="active"{% endif %}><a href="{% url "login" %}">Login </a></li>
                     {% endif %}
                 </ul>
             </div><!-- /.navbar-collapse -->

@@ -45,4 +45,11 @@
             </div>
         </div>
     </div>
+    {% if request.user.is_superuser %}
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <h1>Super Admin</h1>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}
