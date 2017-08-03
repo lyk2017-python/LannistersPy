@@ -1,3 +1,4 @@
+{% load static gravatar %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,6 +38,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if request.user.is_authenticated %}
+                    <a href="{% gravatar_profile_url request.user.email %}">{% gravatar request.user.email 80 %}</a>
                         <li><a href="{% url "profile" profile_slug=request.user.username %}">User: {{request.user.username}}</a></li>
                         {% url "logout" as logout_url %}
                         <li  {% if request.path == logout_url %}class="active"{% endif %}><a href="{% url "logout" %}">Logout </a></li>
@@ -48,7 +50,6 @@
                     {% endif %}
                 </ul>
             </div><!-- /.navbar-collapse -->
-            <h9><em>A Lannister Machine always pays its debts.<span class="copyleft">&copy;</span></em></h9>
         </div><!-- /.container-fluid -->
     </nav>
     {% block body %}{% endblock %}
