@@ -1,13 +1,12 @@
 from django.contrib.auth import get_user_model
 from django.views import generic
-from payment.models import Vendor, Product, Transaction, UserCard, PrepaidCard
+from payment.models import Vendor, Product, PrepaidCard
 from payment.forms import ContactForm, CommentForm, CardForm, CustomUserCreationForm, PrepaidCardForm
 from django.core.mail import send_mail
 from django.http import Http404, JsonResponse
 from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.utils.decorators import method_decorator
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
 
 
 class IndexView(generic.ListView):
@@ -51,6 +50,7 @@ class PrepaidCardListView(SuperAdminList):
     model = PrepaidCard
 
 
+@user_passes_test(lambda u: u.is_superuser)
 def generate_prepaid_card(request):
     try:
         value = int(request.POST["value"])
@@ -145,8 +145,8 @@ class CardFormView(generic.FormView):
     success_url = "."
 
     def get_initial(self):
-        if(self.request.user.is_authenticated):
-            return {"user_card": self.request.user.card.card_number}
+        if self.request.user.is_authenticated:
+            return {"user_card": self.request.user.card}
 
     def form_valid(self, form):
         form.save()
