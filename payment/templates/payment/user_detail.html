@@ -47,9 +47,32 @@
     </div>
     {% if request.user.is_superuser %}
         <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <h1>Super Admin</h1>
+            <div class="col-md-10 col-md-offset-1 text-center">
+                <h1>Super Admin Area</h1>
+                <p><a href="{% url "generator" %}">Prepaid Card Generator</a> | <a href="{% url "cards" %}">See Available Prepaid Cards</a></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 card-bg text-center">
+                <h3>Enter Value</h3>
+                <p><input class="input-lg" id="value"></p>
+                <p><button onclick="generatePrepaidCard()" class="btn btn-default">Generate Prepaid Card</button></p>
             </div>
         </div>
     {% endif %}
+    <script>
+        function generatePrepaidCard() {
+            $.post(
+                "{% url "generate" %}",
+                {
+                    "value": $("#value").val(),
+                    "csrfmiddlewaretoken": getCookie('csrftoken')
+                },
+                function(data) {
+                    alert("Generated PrepaidCard: " + data["barcode"]);
+                },
+                "json"
+            )
+        }
+    </script>
 {% endblock %}
