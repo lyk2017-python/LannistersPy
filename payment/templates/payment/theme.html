@@ -38,10 +38,10 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if request.user.is_authenticated %}
-                    <a href="{% gravatar_profile_url request.user.email %}">{% gravatar request.user.email 80 %}</a>
                         <li><a href="{% url "profile" profile_slug=request.user.username %}">User: {{request.user.username}}</a></li>
                         {% url "logout" as logout_url %}
                         <li  {% if request.path == logout_url %}class="active"{% endif %}><a href="{% url "logout" %}">Logout </a></li>
+                        <li><a href="{% gravatar_profile_url request.user.email %}">{% gravatar request.user.email 25 %}</a></li>
                     {% else %}
                         {% url "signup" as signup_url %}
                         <li  {% if request.path == signup_url %}class="active"{% endif %}><a href="{% url "signup" %}">Sign Up </a></li>
@@ -53,14 +53,14 @@
         </div><!-- /.container-fluid -->
     </nav>
     {% block body %}{% endblock %}
-    <footer class="footer">
-        <div class="navbar navbar-default">
-            <div class="container">
-                <ul class="nav navbar-nav">
-                    <li><a>Copyleft Lannisters Py</a></li>
-                    <h9><em>A Lannister Machine always pays its debts.<span class="copyleft">&copy;</span></em></h9>
-                </ul>
-            </div>
+    <footer class="navbar navbar-default footer">
+        <div class="container">
+            <ul class="nav navbar-nav">
+                <li><a><span class="copyleft">&copy;</span> Copyleft Lannisters Py</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a><h9><em>A Lannister Machine always pays its debts.</em></h9></a></li>
+            </ul>
         </div>
     </footer>
 </body>

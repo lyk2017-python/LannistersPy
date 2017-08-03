@@ -27,13 +27,31 @@
     }
 }
 
-.footer {
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
     position: relative;
+    margin: 0;
+    padding-bottom: 80px;
+    min-height: 100%;
+}
+
+.footer {
+    position: absolute;
+    right: 0;
     bottom: 0;
-    width: 100%;
-    /* Set the fixed height of the footer here */
-    height: 80px;
+    left: 0;
+    text-align: center;
     background-color: #4e5d6c;
+    padding-bottom: 0;
+    margin-bottom: 0;
 }
 
 .card-bg {
@@ -110,7 +128,7 @@ p.card-text {
     color: #dddddd;
 }
 
-h9{
+h9 {
     color: #ffffff
 }
 
