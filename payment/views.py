@@ -8,6 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 
+
 class IndexView(generic.ListView):
     model = Vendor
 
@@ -52,6 +53,7 @@ class ProductView(generic.CreateView):
         if self.request.method in ["POST", "PUT"]:
             post_data = kwargs["data"].copy()
             post_data["product"] = self.get_product().id
+            post_data["author"] = self.request.user.id
             kwargs["data"] = post_data
         return kwargs
 
@@ -59,6 +61,7 @@ class ProductView(generic.CreateView):
         context = super().get_context_data(**kwargs)
         product = self.get_product()
         context["object"] = product
+        context["user"] = self.request.user
         context["comments"] = product.comment_set.all()
         return context
 
@@ -80,11 +83,9 @@ class LoginCreateView(LoginRequiredMixin, generic.CreateView):
 class TransactionListView(generic.ListView):
     model = Transaction
 
-
     @method_decorator(login_required)
     def post(self, request, *a, **kw):
         return super().post(request, *a, **kw)
-
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -120,6 +121,7 @@ class CardFormView(generic.FormView):
     def form_valid(self, form):
         form.save()
         return super().form_valid(form)
+
 
 class FaqView(generic.TemplateView):
     template_name = "payment/faq.html"

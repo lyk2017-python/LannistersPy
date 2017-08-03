@@ -84,16 +84,6 @@ class Inventory(models.Model):
         return "{vendor} -> {product} #{count}".format(vendor=self.vendor, product=self.product, count=self.count)
 
 
-class Comment(models.Model):
-    created = models.DateTimeField(auto_now_add=True)
-    message = models.TextField()
-    product = models.ForeignKey(Product)
-    # author field will be added
-
-    def __str__(self):
-        return "{message}".format(message=self.message)
-
-
 @receiver(pre_save, sender=Product)
 def generate_slug(sender, instance, *args, **kwargs):
     if not instance.slug:
@@ -106,6 +96,16 @@ def generate_slug(sender, instance, *args, **kwargs):
 
 class ExtendedUser(AbstractUser):
     card = models.OneToOneField(UserCard, null=True)
+
+
+class Comment(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
+    message = models.TextField()
+    product = models.ForeignKey(Product)
+    author = models.ForeignKey(ExtendedUser, blank=False, null=True)
+
+    def __str__(self):
+        return "{message}".format(message=self.message)
 
 
 class Transaction(models.Model):

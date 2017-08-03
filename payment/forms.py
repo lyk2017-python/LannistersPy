@@ -16,12 +16,12 @@ class ContactForm(forms.Form):
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-
         exclude = [
-            "id",
+            "id"
         ]
         widgets = {
-            "product": forms.HiddenInput()
+            "product": forms.HiddenInput(),
+            "author": forms.HiddenInput()
         }
 
 
@@ -56,6 +56,7 @@ class CardForm(forms.Form):
             prepaid_card.save(update_fields=["is_used"])
             t = Transaction.objects.create(user_card=user_card, prepaid_card=prepaid_card)
         return t
+
 
 class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
