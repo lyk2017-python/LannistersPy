@@ -2,10 +2,35 @@
     width: 100%;
 }
 
+.navbar {
+    min-height: 80px;
+}
+
+.navbar-brand {
+    padding: 0 15px;
+    height: 80px;
+    line-height: 80px;
+}
+
+.navbar-toggle {
+    /* (80px - button height 34px) / 2 = 23px */
+    margin-top: 23px;
+    padding: 9px 10px !important;
+}
+
+@media (min-width: 768px) {
+    .navbar-nav > li > a {
+        /* (80px - line-height of 27px) / 2 = 26.5px */
+        padding-top: 26.5px;
+        padding-bottom: 26.5px;
+        line-height: 27px;
+    }
+}
+
 .card-bg {
     margin-bottom: 20px;
     padding: 20px 20px 10px 20px;
-    background-color: #ebebeb;
+    background-color: #4e5d6c;
     border-radius: 10px;
 }
 
@@ -13,9 +38,9 @@
     border-top: 1px solid rgba(0, 0, 0, .125);
 }
 
-body {
-    background-image: url("../img/seigaiha.png");
-}
+/*body {*/
+    /*background-image: url("../img/seigaiha.png");*/
+/*}*/
 
 .thumbnail {
     padding: 0;
@@ -52,10 +77,26 @@ body {
 }
 
 .panel-primary>.panel-heading {
-    background-color: #8c8c8c;
-    border-color: #8c8c8c;
+    background-color: #2b3e50;
+    border-color: #2b3e50;
 }
 
 .panel-primary {
-    border-color: #8c8c8c;
+    border-color: #2b3e50;
+}
+
+a {
+    color: #ffffff;
+}
+
+.text-muted {
+    color: #bbbbbb;
+}
+
+.btn-default {
+    background-color: #2b3e50;
+}
+
+p.card-text {
+    color: #dddddd;
 }

@@ -8,7 +8,7 @@
                     <div class="card mb-3 card-bg">
                         <img class="card-img-top full-width" style="max-height: 200px; object-fit: cover; margin-top: 10px;" src="{{ inventory.product.get_image_url }}" alt="Card image cap">
                         <div class="card-block">
-                            <a href="{% url "product" product_slug=inventory.product.slug %}"><h4 class="card-title">{{ inventory.product.name|title }}</h4></a>
+                            <a href="{% url "product" product_slug=inventory.product.slug %}"><h4 class="card-title">{{ inventory.product.name }}</h4></a>
                             <p class="card-text">{{ inventory.product.description }}</p>
                             <p class="card-text"><small class="text-muted">{{ inventory.count }} remaining in stock.</small></p>
                             <p class="card-text text-muted card-footer">

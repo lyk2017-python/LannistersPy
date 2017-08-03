@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/bootstrap-superhero.min.css" %}">
     <link rel="stylesheet" href="{% static "css/style.css" %}">
 </head>
 <body>
@@ -37,7 +37,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if request.user.is_authenticated %}
-                        <li><a href="{% url "profile" profile_slug=request.user.username %}">Welcome {{request.user.username|title}} | {{request.user.card}}</a></li>
+                        <li><a href="{% url "profile" profile_slug=request.user.username %}">User: {{request.user.username}}</a></li>
                         {% url "logout" as logout_url %}
                         <li  {% if request.path == logout_url %}class="active"{% endif %}><a href="{% url "logout" %}">Logout </a></li>
                     {% else %}

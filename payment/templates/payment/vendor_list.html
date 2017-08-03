@@ -9,7 +9,7 @@
                         <div class="card card-bg">
                             <img class="card-img-top full-width" src="{{ vendor.get_image_url }}" alt="{{ vendor.location }} Image">
                             <div class="card-block">
-                                <a href="{% url "vendor" id=vendor.id %}"><h4 class="card-title">{{ vendor.location|title }}</h4></a>
+                                <a href="{% url "vendor" id=vendor.id %}"><h4 class="card-title">{{ vendor.location }}</h4></a>
                                 <p class="card-text">{{ vendor.product_names|join:", "|title }}</p>
                             </div>
                             <div class="card-footer">
