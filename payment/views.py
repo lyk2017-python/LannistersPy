@@ -1,9 +1,9 @@
 from django.contrib.auth import get_user_model
 from django.views import generic
-from payment.models import Vendor, Product, Transaction, UserCard
-from payment.forms import ContactForm, CommentForm, CardForm, CustomUserCreationForm
+from payment.models import Vendor, Product, Transaction, UserCard, PrepaidCard
+from payment.forms import ContactForm, CommentForm, CardForm, CustomUserCreationForm, PrepaidCardForm
 from django.core.mail import send_mail
-from django.http import Http404
+from django.http import Http404, JsonResponse
 from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.decorators import method_decorator
@@ -35,6 +35,30 @@ class VendorView(generic.DetailView):
         context = super().get_context_data(**kwargs)
         context["inventories"] = context["object"].inventory_set.all()
         return context
+
+
+class PrepaidCardCreateView(generic.CreateView):
+    form_class = PrepaidCardForm
+    template_name = "payment/prepaid_card_create.html"
+    success_url = "."
+
+
+class SuperAdminList(LoginRequiredMixin, generic.ListView):
+    pass
+
+
+class PrepaidCardListView(SuperAdminList):
+    model = PrepaidCard
+
+
+def generate_prepaid_card(request):
+    try:
+        value = int(request.POST["value"])
+        if value > 0:
+            card = PrepaidCard.objects.create(value=value)
+            return JsonResponse({"barcode": card.barcode})
+    except:
+        raise Http404()
 
 
 class ProductView(generic.CreateView):

@@ -25,6 +25,18 @@ class CommentForm(forms.ModelForm):
         }
 
 
+class PrepaidCardForm(forms.ModelForm):
+    class Meta:
+        model = PrepaidCard
+        exclude = [
+            "id"
+        ]
+        widgets = {
+            "is_used": forms.HiddenInput(),
+            "barcode": forms.HiddenInput()
+        }
+
+
 class CardForm(forms.Form):
     prepaid_card = forms.CharField(max_length=8, min_length=8)
     user_card = forms.CharField(max_length=16, min_length=16)

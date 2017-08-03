@@ -1,0 +1,45 @@
+{% extends "payment/theme.html" %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+                <div class="panel panel-primary">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">
+                        <h2 class="panel-title">
+                            Transactions
+                        </h2>
+                    </div>
+                    <div class="panel-body">
+                        <h3>
+                            Prepaid Cards
+                        </h3>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Card Number</th>
+                                    <th>Amount</th>
+                                    <th>Is Used?</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for card in object_list %}
+                                    <tr>
+                                        <td>{{ card.barcode }}</td>
+                                        <td>{{ card.value }}</td>
+                                        <td>{{ card.is_used }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

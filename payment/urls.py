@@ -11,5 +11,8 @@ urlpatterns = [
     url(r'^card/$', CardFormView.as_view(), name='card'),
     url(r'^faq/$', FaqView.as_view(), name='faq'),
     url(r'^signup/$', RegistrationView.as_view(), name='signup'),
-    url(r'^profile/(?P<profile_slug>[\w-]+)/$', views.UserDetailView.as_view(), name="profile")
+    url(r'^profile/(?P<profile_slug>[\w-]+)/$', views.UserDetailView.as_view(), name="profile"),
+    url(r'^generator/$', views.PrepaidCardCreateView.as_view(), name="generator"),
+    url(r'^generate/$', views.generate_prepaid_card, name="generate"),
+    url(r'^cards/$', views.PrepaidCardListView.as_view(), name="cards")
 ]
