@@ -6,6 +6,7 @@ class VendorInline(admin.StackedInline):
     model = Inventory
     extra = 0
 
+
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     exclude = ('slug',)
@@ -20,7 +21,7 @@ class ProductAdmin(admin.ModelAdmin):
         "price",
     ]
     list_filter = [
-        "name", # Filters in list screen.
+        "name",  # Filters in list screen.
         "brand",
         "price",
     ]
@@ -70,6 +71,7 @@ class VendorAdmin(admin.ModelAdmin):
         "location"  # Filters in list screen.
     ]
 
+
 @admin.register(ExtendedUser)
 class UserAdmin(admin.ModelAdmin):
     list_display = [
@@ -78,10 +80,21 @@ class UserAdmin(admin.ModelAdmin):
         "card"
     ]
 
+
 @admin.register(Transaction)
 class TransactionAdmin(admin.ModelAdmin):
     list_display = [
         "prepaid_card",
         "user_card",
         "date"
+    ]
+
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = [
+        "created ",
+        "message ",
+        "product ",
+        "author "
     ]
