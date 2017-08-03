@@ -90,11 +90,4 @@ class TransactionAdmin(admin.ModelAdmin):
     ]
 
 
-@admin.register(Comment)
-class CommentAdmin(admin.ModelAdmin):
-    list_display = [
-        "created ",
-        "message ",
-        "product ",
-        "author "
-    ]
+
