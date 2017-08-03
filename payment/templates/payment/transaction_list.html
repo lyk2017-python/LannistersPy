@@ -6,7 +6,7 @@
             <div class="col-md-6 col-md-offset-3">
                 <div class="list-group"></div>
                 {% for transaction in transactions %}
-                    <div class="list-group-item card-bg">Prepaid Card: {{ transaction.prepaid_card }} | Value: {{ transaction.prepaid_card.value }} | -> User Card: {{ transaction.user_card }}</div>
+                    <div class="list-group-item card-bg">Prepaid Card: {{ transaction.prepaid_card }} | Value: {{ transaction.prepaid_card.value }} | -> User Card: {{ request.user.card }}</div>
                 {% endfor %}
             </div>
         </div>

@@ -129,7 +129,8 @@ class CardFormView(generic.FormView):
     success_url = "."
 
     def get_initial(self):
-        return {"user_card": self.request.user.card}
+        if(self.request.user.is_authenticated):
+            return {"user_card": self.request.user.card}
 
     def form_valid(self, form):
         form.save()
