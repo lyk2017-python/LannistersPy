@@ -45,7 +45,7 @@ class UserCard(models.Model):
     balance = models.PositiveIntegerField(default=0)
 
     def __str__(self):
-        return "{card_number}".format(card_number=self.card_number)
+        return "{card_number}".format(card_number=self.card_number[0:4]+"-"+self.card_number[4:8]+"-"+self.card_number[8:12]+"-"+self.card_number[12:16])
 
 
 class PrepaidCard(models.Model):

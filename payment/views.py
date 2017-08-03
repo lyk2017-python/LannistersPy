@@ -6,6 +6,8 @@ from django.core.mail import send_mail
 from django.http import Http404, JsonResponse
 from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 
 
 class IndexView(generic.ListView):
@@ -113,9 +115,8 @@ class UserDetailView(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        if context["object"].card.transaction_set:
-            transactions = context["object"].card.transaction_set.all()
-            context["transactions"] = transactions
+        transactions = context["object"].card.transaction_set.all()
+        context["transactions"] = transactions
         return context
 
 
@@ -144,7 +145,7 @@ class CardFormView(generic.FormView):
     success_url = "."
 
     def get_initial(self):
-        if self.request.user.is_authenticated:
+        if(self.request.user.is_authenticated):
             return {"user_card": self.request.user.card}
 
     def form_valid(self, form):
