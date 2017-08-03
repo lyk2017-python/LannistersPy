@@ -1,5 +1,6 @@
 {% extends "payment/theme.html" %}
 {% load bootstrap %}
+{% load static gravatar %}
 
 {% block body %}
     <div class="container">
@@ -22,7 +23,7 @@
                 <div class="col-md-10 col-md-offset-1">
                     <div class="col-sm-2 col-sm-offset-2">
                         <div class="thumbnail">
-                            <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                            {% gravatar comment.author.email 127 %}
                         </div><!-- /thumbnail -->
                     </div><!-- /col-sm-1 -->
                     <div class="col-sm-6">
@@ -47,7 +48,7 @@
                     <button class="btn btn-default" type="submit">Save</button>
                 </form>
                 {% else %}
-                You have to login to leave a comment.
+                    <p>You have to login to leave a comment.</p>
                 {% endif %}
             </div>
         </div>
