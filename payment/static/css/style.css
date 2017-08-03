@@ -27,6 +27,15 @@
     }
 }
 
+.footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 80px;
+    background-color: #4e5d6c;
+}
+
 .card-bg {
     margin-bottom: 20px;
     padding: 20px 20px 10px 20px;
