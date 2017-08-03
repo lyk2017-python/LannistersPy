@@ -50,3 +50,12 @@ body {
     border-right-color: #ddd;
     border-width: 8px;
 }
+
+.panel-primary>.panel-heading {
+    background-color: #8c8c8c;
+    border-color: #8c8c8c;
+}
+
+.panel-primary {
+    border-color: #8c8c8c;
+}

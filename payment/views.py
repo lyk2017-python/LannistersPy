@@ -81,20 +81,6 @@ class LoginCreateView(LoginRequiredMixin, generic.CreateView):
     pass
 
 
-class TransactionListView(generic.ListView):
-    model = Transaction
-
-    @method_decorator(login_required)
-    def post(self, request, *a, **kw):
-        return super().post(request, *a, **kw)
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        transactions = context["object_list"]
-        context["transactions"] = transactions
-        return context
-
-
 class UserDetailView(generic.DetailView):
     model = get_user_model()
     template_name = "payment/user_detail.html"
@@ -102,6 +88,12 @@ class UserDetailView(generic.DetailView):
 
     def get_slug_field(self):
         return 'username'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        transactions = context["object"].card.transaction_set.all()
+        context["transactions"] = transactions
+        return context
 
 
 class ContactFormView(generic.FormView):
