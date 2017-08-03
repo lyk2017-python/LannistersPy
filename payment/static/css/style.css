@@ -100,3 +100,12 @@ a {
 p.card-text {
     color: #dddddd;
 }
+
+h9{
+    color: #ffffff
+}
+
+.copyleft{
+    display: inline-block;
+    transform: rotate(180deg);
+}
