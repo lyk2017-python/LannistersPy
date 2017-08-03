@@ -11,5 +11,6 @@ urlpatterns = [
     url(r'^card/$', CardFormView.as_view(), name='card'),
     url(r'^transactions/$', TransactionListView.as_view(), name='transactions'),
     url(r'^faq/$', FaqView.as_view(), name='faq'),
-    url(r'^signup/$', RegistrationView.as_view(), name='signup')
+    url(r'^signup/$', RegistrationView.as_view(), name='signup'),
+    url(r'^profile/(?P<profile_slug>[\w-]+)/$', views.UserDetailView.as_view(), name="profile")
 ]

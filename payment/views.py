@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.views import generic
 from payment.models import Vendor, Product, Transaction, UserCard
 from payment.forms import ContactForm, CommentForm, CardForm, CustomUserCreationForm
@@ -94,6 +95,15 @@ class TransactionListView(generic.ListView):
         return context
 
 
+class UserDetailView(generic.DetailView):
+    model = get_user_model()
+    template_name = "payment/user_detail.html"
+    slug_url_kwarg = "profile_slug"
+
+    def get_slug_field(self):
+        return 'username'
+
+
 class ContactFormView(generic.FormView):
     form_class = ContactForm
     template_name = "payment/contact.html"
@@ -117,6 +127,9 @@ class CardFormView(generic.FormView):
     form_class = CardForm
     template_name = "payment/card.html"
     success_url = "."
+
+    def get_initial(self):
+        return {"user_card": self.request.user.card}
 
     def form_valid(self, form):
         form.save()
