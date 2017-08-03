@@ -90,4 +90,19 @@ class TransactionAdmin(admin.ModelAdmin):
     ]
 
 
-
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = [
+        "created",
+        "author",
+        "product",
+        "message"
+    ]
+    search_fields = [
+        "product",
+        "message"
+    ]
+    list_filter = [
+        "created",
+        "author"
+    ]
