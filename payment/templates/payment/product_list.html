@@ -7,10 +7,11 @@
                 {% for product in products %}
                     <div class="col-md-4 col-xs-12">
                         <div class="card mb-3 card-bg">
-                            <img class="card-img-top full-width" style="max-height: 400px; object-fit: cover;" src= "{{ product.get_image_url }}" alt="Card image cap">
+                            <img class="card-img-top full-width" style="height: 400px; overflow: hidden; object-fit: cover;" src= "{{ product.get_image_url }}" alt="Card image cap">
                             <div class="card-block">
-                                <a href="{% url "product" product_slug=product.slug %}"><h4 class="card-title">{{product.name|title }}</h4></a>
-                                <p class="card-text">{{ product.description }}</p>
+                                <h4 style="float: right;">${{ product.price }}</h4>
+                                <a href="{% url "product" product_slug=product.slug %}"><h4 class="card-title">{{ product.name|title }}</h4></a>
+                                <p class="card-text">{{ product.description|truncatechars:50 }}</p>
                             </div>
                             <div class="card-footer">
                                 <p class="card-text text-muted">
