@@ -12,10 +12,10 @@
                 <div class="card-block">
                     <h2 class="card-title" style="overflow-wrap: break-word">{{ object.name|title }}</h2>
                     <p class="card-text">{{ object.description }}</p>
-                    <a class="card-text" href="{{ object.product_home }}">
+                    <a class="card-text" target="_blank" href="{{ object.product_home }}">
                         <small class="text-muted">{{ object.product_home }}</small>
-                        <span style="float: right;">${{ object.price }}</span>
                     </a>
+                    <span style="float: right;">${{ object.price }}</span>
                 </div>
             </div>
         </div>
