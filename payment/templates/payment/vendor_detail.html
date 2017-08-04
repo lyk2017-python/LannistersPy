@@ -2,6 +2,11 @@
 
 {% block body %}
     <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center">
+                <h1 style="margin-bottom: 20px;">{{ object.location }}</h1>
+            </div>
+        </div>
         {% for inventory in inventories %}
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1">
