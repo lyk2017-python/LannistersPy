@@ -21,13 +21,13 @@
         </div>
         {% for comment in comments %}
             <div class="row">
-                <div class="col-md-10 col-md-offset-1">
-                    <div class="col-sm-2 col-sm-offset-2">
+                <div class="col-md-10 col-md-offset-1 col-xs-12">
+                    <div class="col-sm-2 col-sm-offset-2 col-xs-2">
                         <div class="thumbnail">
                             {% gravatar comment.author.email 127 %}
                         </div><!-- /thumbnail -->
                     </div><!-- /col-sm-1 -->
-                    <div class="col-sm-6">
+                    <div class="col-sm-6 col-xs-10">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <strong>{{ comment.author.username }}</strong> <span class="text-muted">{{ comment.created }}</span>

@@ -7,7 +7,7 @@
                 {% for vendor in vendors %}
                     <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="card card-bg">
-                            <img style="height: 240px; object-fit: cover;" class="card-img-top full-width" src="{{ vendor.get_image_url }}" alt="{{ vendor.location }} Image">
+                            <a href="{% url "vendor" id=vendor.id %}"><img style="height: 240px; object-fit: cover;" class="card-img-top full-width" src="{{ vendor.get_image_url }}" alt="{{ vendor.location }} Image"></a>
                             <div class="card-block">
                                 <a href="{% url "vendor" id=vendor.id %}"><h4 class="card-title">{{ vendor.location|truncatechars:22 }}</h4></a>
                                 <p class="card-text">{{ vendor.product_names|join:", "|title|truncatechars:25 }}</p>
