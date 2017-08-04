@@ -10,7 +10,7 @@
                         <div class="card-block">
                             <a href="{% url "product" product_slug=inventory.product.slug %}"><h4 class="card-title">{{ inventory.product.name }}</h4></a>
                             <h4 style="float: right;">${{ inventory.product.price }}</h4>
-                            <p class="card-text">{{ inventory.product.description }}</p>
+                            <p class="card-text">{{ inventory.product.description|truncatechars:130 }}</p>
                             <p class="card-text"><small class="text-muted">{{ inventory.count }} remaining in stock.</small></p>
                             <p class="card-text text-muted card-footer">
                                 <small>

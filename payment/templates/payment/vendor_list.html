@@ -10,7 +10,7 @@
                             <img style="height: 233px; width: 223px; object-fit: cover;" class="card-img-top full-width" src="{{ vendor.get_image_url }}" alt="{{ vendor.location }} Image">
                             <div class="card-block">
                                 <a href="{% url "vendor" id=vendor.id %}"><h4 class="card-title">{{ vendor.location }}</h4></a>
-                                <p class="card-text">{{ vendor.product_names|join:", "|title }}</p>
+                                <p class="card-text">{{ vendor.product_names|join:", "|title|truncatechars:32 }}</p>
                             </div>
                             <div class="card-footer">
                                 <small class="text-muted">{{ vendor.address }}</small> <br>

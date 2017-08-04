@@ -36,6 +36,10 @@ html {
     box-sizing: inherit;
 }
 
+* {
+    overflow-wrap: break-word;
+}
+
 body {
     position: relative;
     margin: 0;

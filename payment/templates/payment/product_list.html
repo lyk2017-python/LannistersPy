@@ -11,12 +11,12 @@
                             <div class="card-block">
                                 <h4 style="float: right;">${{ product.price }}</h4>
                                 <a href="{% url "product" product_slug=product.slug %}"><h4 class="card-title">{{ product.name|title }}</h4></a>
-                                <p class="card-text">{{ product.description|truncatechars:50 }}</p>
+                                <p class="card-text">{{ product.description|truncatechars:80 }}</p>
                             </div>
                             <div class="card-footer">
                                 <p class="card-text text-muted">
                                     <small>
-                                        Brand: {{ product.brand|title }}<br>Product Home: <a href="{{ product.product_home }}" target="_blank" class="text-muted">{{ product.product_home }}</a>
+                                        Brand: {{ product.brand|title }}<br>Product Home: <a href="{{ product.product_home }}" target="_blank" class="text-muted">{{ product.product_home|truncatechars:40 }}</a>
                                     </small>
                                 </p>
                             </div>
