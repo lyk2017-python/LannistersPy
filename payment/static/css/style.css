@@ -140,3 +140,9 @@ h9 {
     display: inline-block;
     transform: rotate(180deg);
 }
+
+@media (max-width: 992px) {
+    body {
+        padding-bottom: 100px;
+    }
+}
