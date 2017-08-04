@@ -146,3 +146,7 @@ h9 {
         padding-bottom: 100px;
     }
 }
+
+.no-hover:hover, .no-hover:focus {
+    background-color: transparent !important;
+}
